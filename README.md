@@ -1,5 +1,7 @@
 # README
 
+The reconstructed images from CIFAR-10 are in the folder called "output_file"
+
 # Train
 
 For training, run the following program:
