@@ -38,8 +38,11 @@ class EarlyStopping:
         return self.checkpoint_perf
 
     def save_checkpoint(self, g, d, val_psnr):
+        self.val_psnr_min = val_psnr
         if self.verbose:
             print(f'Validation PSNR increased ({self.val_psnr_min:.6f} --> {val_psnr:.6f}).  Saving model ...')
             torch.save(g.state_dict(), 'Generator.pth')
             torch.save(d.state_dict(), 'Discriminator.pth')
-        self.val_psnr_min = val_psnr
+        else:
+            torch.save(g.state_dict(), 'Generator.pth')
+            torch.save(d.state_dict(), 'Discriminator.pth')
